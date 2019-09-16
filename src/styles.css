@@ -15,11 +15,9 @@ body {
 .container {
   display: flex;
   flex-direction: row;
+  margin-left: 40%;
 }
 
-router-outlet + *  {
-  padding: 0 16px;
-}
 
 /* Text */
 
@@ -31,7 +29,11 @@ h2 {
   font-size: 20px;
 }
 
-h1, h2 {
+h3 {
+  font-size: 16px;
+}
+
+h1, h2, h3 {
   font-weight: lighter;
 }
 

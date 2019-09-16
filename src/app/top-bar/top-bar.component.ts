@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GridService } from '../services/grid.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -8,9 +7,7 @@ import { GridService } from '../services/grid.service';
 })
 export class TopBarComponent implements OnInit {
 
-  constructor(private gridService: GridService ) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.gridService.readFile();
-  }
+  ngOnInit() { }
 }

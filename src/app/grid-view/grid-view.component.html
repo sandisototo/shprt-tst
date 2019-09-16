@@ -1,29 +1,13 @@
-<h2>Random generated 5x5 Grid</h2>
-<div class="flex-container">
-    <div class="flex-item">1</div>
-    <div class="flex-item">2</div>
-    <div class="flex-item">3</div>
-    <div class="flex-item">4</div>
-    <div class="flex-item">5</div>
+<div class="grid-header">
+    <h2>Random generated 5x5 Grid</h2> &nbsp; <button class="button reload-button" (click)="generateGrid()">Reload<i class="material-icons">refresh</i></button>
 </div>
-<div class="flex-container">
-    <div class="flex-item">1</div>
-    <div class="flex-item">2</div>
-    <div class="flex-item">3</div>
-    <div class="flex-item">4</div>
-    <div class="flex-item">5</div>
+
+<div class="flex-container" *ngFor="let i of gridList">
+    <div class="flex-item" *ngFor="let j of i">{{j}}</div>
 </div>
-<div class="flex-container">
-    <div class="flex-item">1</div>
-    <div class="flex-item">2</div>
-    <div class="flex-item">3</div>
-    <div class="flex-item">4</div>
-    <div class="flex-item">5</div>
-</div>
-<div class="flex-container">
-    <div class="flex-item">1</div>
-    <div class="flex-item">2</div>
-    <div class="flex-item">3</div>
-    <div class="flex-item">4</div>
-    <div class="flex-item">5</div>
+<button class="button custom-button" (click)="start()">Search<i class="material-icons">play_arrow</i></button>
+
+<h3 *ngIf="word">Searching for: <strong>{{word}}</strong></h3>
+<div class="success-box" *ngIf="!searching && searchResults">
+        <p *ngIf="searchResults"><strong>"{{word}}"</strong> found at position {{searchResults.row}}, {{searchResults.row}} </p>
 </div>

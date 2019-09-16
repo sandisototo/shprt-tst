@@ -1,3 +1,7 @@
+.grid-header {
+    margin-top: 20px;
+    display: flex;
+}
 
 .flex-container {
     list-style: none;
@@ -8,11 +12,10 @@
     display: flex;
     flex-flow: row;
     justify-content: space-around;
-
-    width:100%;
     justify-content:center;
     align-items:center;
 }
+
 .flex-item {
     background: tomato;
     margin: 1px;
@@ -20,11 +23,43 @@
     font-weight: bold;
     font-size: 1.5em;
     text-align: center;
-    flex: 1 0 auto;
+    flex: 1 0 0;
     height:auto;
 }
+
 .flex-item:before {
     content:'';
     float:left;
     padding-top:100%;
+}
+
+.custom-button {
+    margin-top: 8px;
+    background-color: #000000;
+    color: white;
+}
+
+.custom-button i {
+    color: white;
+}
+
+.reload-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #eaeaea;
+    color: #616161;
+    border: none;
+}
+
+.success-box {
+    padding-top: 20px;
+    text-align: center;
+    height: 20%;
+    -webkit-box-shadow: -9px -4px 62px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -9px -4px 62px 0px rgba(0,0,0,0.75);
+box-shadow: -9px -4px 62px 0px rgba(0,0,0,0.75);
 }

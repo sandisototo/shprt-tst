@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class GridService {
   private x = [-1, -1, -1, 0, 0];
   private y = [-1, 0, 1, -1, 1];
 
-  private GRID_ELEMENT: string [][];
+  private GRID: any [][] = [];
+  fileData: string;
 
   constructor(private http: HttpClient) { }
 
@@ -63,28 +65,22 @@ export class GridService {
     return String.fromCharCode(97 + Math.floor(Math.random() * 26));
   }
 
-  // Get grid elements ---> row and columns
-  getGridElement() {
+  // Generate a grid
+  generateGrid() {
     for (let i = 0; i < 5; i++) {
       for (let j = 0; j < 5; j++) {
         let randomLetter = this.generateRandomLetter();
-        this.GRID_ELEMENT[i][j] = randomLetter;
+
+        if (!this.GRID[i]) {
+          this.GRID[i] = [];
+          this.GRID[i][j]= randomLetter;
+        } else {
+          this.GRID[i][j]= randomLetter;
+        }
       }
     }
 
-    return this.GRID_ELEMENT;
-  }
-
-  // Generate a grid
-  generateGrid() {
-    const GRID = [];
-
-    for (let x = 0; x < 5; x++) {
-      let element = this.getGridElement();
-      GRID.push(element);
-    }
-
-    return GRID;
+    return this.GRID;
   }
 
   // Searches given word in a given 
@@ -96,35 +92,16 @@ export class GridService {
       for (let col = 0; col < this.C; col++) {
         if (this.search2D(grid, row, col, word)) {
           console.log(word + " found at " + row + ", " + col);
+          return {
+            row,
+            col
+          }
         }
       }
     }
   }
 
   readFile() {
-    this.http.get('assets/words.txt', { responseType: 'text' }).subscribe(data => {
-      console.log(data);
-  })
-    // return fs.readFileSync("assets/words.txt", "utf-8").split("\n");
+    return this.http.get('assets/words.txt', { responseType: 'text' }).pipe(map(data => data.split("\n")));
   }
-
-  // start() {
-  //   // Read file and split it into an array of words
-  //   let words = this.readFile();
-
-  //   let grid = this.generateGrid();
-
-  //   console.log("=======GRID=========");
-  //   console.log(grid);
-  //   console.log("================");
-  //   // Run through all words
-  //   for (let key = 0; key < words.length; key++) {
-  //     let word = words[key];
-  //     if (grid.length && word) {
-  //       console.log("Search for:::", word);
-  //       this.wordSearch(grid, word);
-  //       console.log("================");
-  //     }
-  //   }
-  // }
 }
