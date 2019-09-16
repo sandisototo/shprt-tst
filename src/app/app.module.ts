@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
-import { GridViewComponent } from './grid-view/grid-view.component';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
+import { GridViewComponent } from './components/grid-view/grid-view.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
