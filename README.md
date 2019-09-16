@@ -27,5 +27,5 @@ For manual testing: go to: ```app/components/grid-view.component.ts: start()``` 
     //   ["u", "v", "w", "x", "y"]
     // ]
     
-    this.gridService.wordSearch(this.gridList, "ihj"); // pass in word e.g abc, xy etc..
+    this.gridService.wordSearch(this.gridList, "abc"); // pass in word e.g abc, xy etc..
 ```
